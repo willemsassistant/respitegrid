@@ -1,0 +1,28 @@
+{
+  "name": "@respitegrid/web",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^5.0.1",
+    "@respitegrid/types": "0.1.0",
+    "@tanstack/react-query": "^5.79.0",
+    "next": "15.3.2",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "react-hook-form": "^7.56.4",
+    "zod": "^3.25.28"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.31",
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.5",
+    "tailwindcss": "^3.4.17"
+  }
+}
