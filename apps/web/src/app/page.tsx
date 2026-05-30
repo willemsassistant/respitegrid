@@ -1,7 +1,30 @@
+import Link from 'next/link';
+
 const pillars = [
   'Trusted short-shift respite coverage',
   'Explainable caregiver matching',
   'Backup coverage with human oversight',
+];
+
+const portals = [
+  {
+    href: '/family/intake',
+    label: 'Family portal',
+    description:
+      'Create care recipient profiles, request coverage, and review caregiver shortlists.',
+  },
+  {
+    href: '/caregiver/apply',
+    label: 'Caregiver portal',
+    description:
+      'Apply, upload skills, set availability, and review job offers.',
+  },
+  {
+    href: '/admin/ops',
+    label: 'Admin portal',
+    description:
+      'Review approvals, inspect risk, understand match explanations, and manually intervene.',
+  },
 ];
 
 export default function HomePage() {
@@ -21,6 +44,17 @@ export default function HomePage() {
             family intake, caregiver onboarding, deterministic matching, and
             admin oversight in one auditable platform.
           </p>
+          <div className="flex flex-wrap gap-4 pt-2">
+            {portals.map((portal) => (
+              <Link
+                key={portal.href}
+                href={portal.href}
+                className="rounded-full bg-ink px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
+              >
+                Open {portal.label}
+              </Link>
+            ))}
+          </div>
         </div>
         <div className="rounded-2xl bg-mist p-6">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-600">
@@ -37,6 +71,25 @@ export default function HomePage() {
             ))}
           </ul>
         </div>
+      </section>
+
+      <section className="grid gap-6 lg:grid-cols-3">
+        {portals.map((portal) => (
+          <article
+            key={portal.href}
+            className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200"
+          >
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-accent">
+              Portal
+            </p>
+            <h2 className="mt-3 text-2xl font-semibold text-slate-950">
+              {portal.label}
+            </h2>
+            <p className="mt-3 text-sm leading-7 text-slate-600">
+              {portal.description}
+            </p>
+          </article>
+        ))}
       </section>
     </main>
   );

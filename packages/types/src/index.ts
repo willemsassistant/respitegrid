@@ -1,3 +1,5 @@
+export * from './schemas';
+
 export type UserRole = 'family' | 'caregiver' | 'admin';
 
 export type BookingStatus =
