@@ -4,7 +4,12 @@ import nextPlugin from 'eslint-config-next';
 
 export default [
   {
-    ignores: ['**/dist/**', '**/.next/**', '**/node_modules/**', '**/coverage/**'],
+    ignores: [
+      '**/dist/**',
+      '**/.next/**',
+      '**/node_modules/**',
+      '**/coverage/**',
+    ],
   },
   ...nextPlugin,
   {
@@ -21,7 +26,7 @@ export default [
       '@typescript-eslint': tseslint,
     },
     rules: {
-      '@typescript-eslint/no-explicit-any': 'warn'
+      '@typescript-eslint/no-explicit-any': 'warn',
     },
   },
 ];

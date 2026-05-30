@@ -1,4 +1,9 @@
-import { CareRecipient, FamilyProfile, VisitRequest, VisitRiskResult } from '@respitegrid/types';
+import {
+  CareRecipient,
+  FamilyProfile,
+  VisitRequest,
+  VisitRiskResult,
+} from '@respitegrid/types';
 
 const RESTRICTED_TERMS = [
   'injection',
@@ -46,7 +51,10 @@ export function computeVisitRisk(
     flags.push('fall_risk');
   }
 
-  if (request.serviceType === 'transportation' || request.transportationRequired) {
+  if (
+    request.serviceType === 'transportation' ||
+    request.transportationRequired
+  ) {
     score += 20;
     flags.push('transportation');
   }
@@ -72,7 +80,14 @@ export function computeVisitRisk(
     flags.push(...restrictedTerms.map((term) => `restricted:${term}`));
   }
 
-  const level = score >= 75 ? 'blocked' : score >= 50 ? 'high' : score >= 25 ? 'medium' : 'low';
+  const level =
+    score >= 75
+      ? 'blocked'
+      : score >= 50
+        ? 'high'
+        : score >= 25
+          ? 'medium'
+          : 'low';
 
   return {
     score,

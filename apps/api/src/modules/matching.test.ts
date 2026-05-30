@@ -1,5 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { CareRecipient, CaregiverProfile, FamilyProfile, VisitRequest } from '@respitegrid/types';
+import {
+  CareRecipient,
+  CaregiverProfile,
+  FamilyProfile,
+  VisitRequest,
+} from '@respitegrid/types';
 import { computeCareFitScore, computeDistanceScore } from './matching';
 import { computeVisitRisk } from './risk';
 
@@ -69,7 +74,11 @@ const caregiver: CaregiverProfile = {
 describe('risk and matching foundation', () => {
   it('computes transportation and restricted-term risk correctly', () => {
     const risk = computeVisitRisk(
-      { ...request, serviceType: 'transportation', notes: 'Needs oxygen support and a ride' },
+      {
+        ...request,
+        serviceType: 'transportation',
+        notes: 'Needs oxygen support and a ride',
+      },
       recipient,
       family,
       new Date('2026-07-10T08:00:00-04:00'),
@@ -77,7 +86,9 @@ describe('risk and matching foundation', () => {
 
     expect(risk.level).toBe('blocked');
     expect(risk.flags).toContain('transportation');
-    expect(risk.flags.some((flag) => flag.startsWith('restricted:oxygen'))).toBe(true);
+    expect(
+      risk.flags.some((flag) => flag.startsWith('restricted:oxygen')),
+    ).toBe(true);
   });
 
   it('ranks a strong caregiver highly', () => {
@@ -87,12 +98,18 @@ describe('risk and matching foundation', () => {
       family,
       caregiver,
       travelMinutes: 18,
-      continuity: { completedVisits: 2, averageRating: 5, lastVisitWithinDays: 14 },
+      continuity: {
+        completedVisits: 2,
+        averageRating: 5,
+        lastVisitWithinDays: 14,
+      },
       availabilityCovered: true,
     });
 
     expect(score.finalScore).toBeGreaterThan(80);
-    expect(score.explanation.positive_factors).toContain('Has dementia experience');
+    expect(score.explanation.positive_factors).toContain(
+      'Has dementia experience',
+    );
   });
 
   it('applies major penalties when caregiver lacks dementia support', () => {
@@ -102,7 +119,9 @@ describe('risk and matching foundation', () => {
       family,
       caregiver: {
         ...caregiver,
-        skills: caregiver.skills.filter((skill) => skill.name !== 'dementia_experience'),
+        skills: caregiver.skills.filter(
+          (skill) => skill.name !== 'dementia_experience',
+        ),
         completedVisitsCount: 1,
       },
       travelMinutes: 10,

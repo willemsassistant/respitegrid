@@ -42,11 +42,34 @@ export type CaregiverSkill =
   | 'pet_friendly'
   | 'overnight_available';
 
-export type CognitiveStatus = 'none' | 'mild_memory_loss' | 'dementia' | 'other';
-export type MobilityLevel = 'independent' | 'cane' | 'walker' | 'wheelchair' | 'bedbound';
-export type ApprovalStatus = 'draft' | 'pending_review' | 'approved' | 'rejected' | 'suspended';
-export type VerificationStatus = 'not_started' | 'pending' | 'verified' | 'failed';
-export type BackgroundStatus = 'not_started' | 'pending' | 'clear' | 'review_required' | 'failed';
+export type CognitiveStatus =
+  | 'none'
+  | 'mild_memory_loss'
+  | 'dementia'
+  | 'other';
+export type MobilityLevel =
+  | 'independent'
+  | 'cane'
+  | 'walker'
+  | 'wheelchair'
+  | 'bedbound';
+export type ApprovalStatus =
+  | 'draft'
+  | 'pending_review'
+  | 'approved'
+  | 'rejected'
+  | 'suspended';
+export type VerificationStatus =
+  | 'not_started'
+  | 'pending'
+  | 'verified'
+  | 'failed';
+export type BackgroundStatus =
+  | 'not_started'
+  | 'pending'
+  | 'clear'
+  | 'review_required'
+  | 'failed';
 
 export interface FamilyProfile {
   id: string;
